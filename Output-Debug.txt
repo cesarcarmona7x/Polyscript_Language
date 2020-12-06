@@ -1,0 +1,221 @@
+﻿'Polyscript_Language.exe' (Win32): Loaded 'C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Debug\Polyscript_Language.exe'. Symbols loaded.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\user32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\win32u.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\gdi32full.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp_win.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbase.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\comdlg32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\combase.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\SHCore.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shlwapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\shell32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ole32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.488_none_89e6152f0b32762e\comctl32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.488_none_89e6152f0b32762e\comctl32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.488_none_89e6152f0b32762e\comctl32.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp110d.dll'. Symbols loaded.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\d2d1.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\opengl32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Polyscript_Language\glew32.dll'. Module was built without symbols.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Polyscript_Language\ftgl.dll'. Module was built without symbols.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Polyscript_Language\freetype.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcr110d.dll'. Symbols loaded.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\glu32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\glu32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\glu32.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\DWrite.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp110.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcr110.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcr110.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\msvcr110.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\imm32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\uxtheme.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msctf.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleaut32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\TextShaping.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\TextInputFramework.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreMessaging.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ws2_32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\CoreUIComponents.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WinTypes.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntmarta.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WinTypes.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\WinTypes.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dxgi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ResourcePolicyClient.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\d3d11.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki131886.inf_amd64_198d816404b4ec79\igd10iumd32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcrypt.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ncrypt.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntasn1.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki131886.inf_amd64_198d816404b4ec79\igdgmm32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki131886.inf_amd64_198d816404b4ec79\igc32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\DXCore.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cfgmgr32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\clbcatq.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WindowsCodecs.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\AppXDeploymentClient.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\ki131886.inf_amd64_198d816404b4ec79\ig9icd32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dwmapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\version.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\powrprof.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\umpdc.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\windows.storage.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wldp.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dui70.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.488_none_11b1e5df2ffd8627\comctl32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\duser.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Program Files (x86)\Common Files\Microsoft Shared\ink\tiptsf.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\edputil.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ExplorerFrame.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\profapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\thumbcache.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\policymanager.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp110_win.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\DataExchange.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dcomp.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\twinapi.appcore.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\Windows.UI.FileExplorer.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\Windows.UI.FileExplorer.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\Windows.UI.FileExplorer.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\oleacc.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\propsys.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\Windows.FileExplorer.Common.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\iertutil.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\xmllite.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\UIAutomationCore.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sxs.dll'. Cannot find or open the PDB file.
+mincore\com\oleaut32\dispatch\ups.cpp(2122)\OLEAUT32.dll!7691245F: (caller: 76913D7F) ReturnHr(1) tid(5c80) 8002801D Library not registered.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\atlthunk.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\StructuredQuery.dll'. Cannot find or open the PDB file.
+The thread 0x5d7c has exited with code 0 (0x0).
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\Windows.StateRepositoryPS.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\Windows.Storage.Search.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cldapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\fltLib.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sspicli.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\IconCodecService.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\mpr.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\coml2.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\drprov.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winsta.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\linkinfo.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntlanman.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\davclnt.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\davhlpr.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wkscli.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cscapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\netutils.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\twinapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\apphelp.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\dlnashext.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\PlayToDevice.dll'. Cannot find or open the PDB file.
+onecore\com\combase\dcomrem\security.cxx(3057)\combase.dll!76CB042D: (caller: 78F57C7A) ReturnHr(1) tid(2634) 80010117 Call context cannot be accessed after call completed.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\DevDispItemProvider.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\winmm.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\MMDevAPI.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\devobj.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\actxprxy.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\OneCoreUAPCommonProxyStub.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\ProgramData\MEGAsync\ShellExtX32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wpdshext.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.19041.630_none_4294daf48a972df6\GdiPlus.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\PortableDeviceApi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Users\cesar\AppData\Local\Microsoft\OneDrive\20.169.0823.0008\FileSyncShell.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wininet.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\version.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\userenv.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wtsapi32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\setupapi.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\wintrust.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\crypt32.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msasn1.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\audiodev.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WMVCORE.DLL'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\WMASF.DLL'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\mfperfhelper.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\mssprxy.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\mssprxy.dll'
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\mssprxy.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntshrui.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\srvcli.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Loaded 'C:\Windows\SysWOW64\networkexplorer.dll'. Cannot find or open the PDB file.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\xmllite.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\WMASF.DLL'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\mfperfhelper.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\WMVCORE.DLL'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\audiodev.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.19041.630_none_4294daf48a972df6\GdiPlus.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\wpdshext.dll'
+The thread 0x62e8 has exited with code 0 (0x0).
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\twinapi.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Program Files (x86)\Common Files\Microsoft Shared\ink\tiptsf.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\Windows.UI.FileExplorer.dll'
+The thread 0x5c80 has exited with code 0 (0x0).
+Se encontro una variable: anos_que_le_quedan_de_gobierno_a_amlo="4".
+Se encontro una referencia: ref_amlo&=*anos_que_le_quedan_de_gobierno_a_amlo.
+Se encontro un puntero: ptr_amlo*=&anos_que_le_quedan_de_gobierno_a_amlo.
+Se encontro una variable: color_rgba="0.0,1.0,0.2,0.4".
+[Inicio de Figura] Se ha iniciado una figura en la linea 5.
+[Compilacion correcta] La linea de BeginFigure es correcta.
+type es un parametro valido.
+RoundedRectangle es un valor valido para type.
+drawMode es un parametro valido.
+Fill es un valor valido para drawMode.
+radiusX es un parametro valido.
+10.8 es un valor valido para radiusX.
+radiusY es un parametro valido.
+5.3 es un valor valido para radiusY.
+color es un parametro valido.
+left es un parametro valido.
+10 es un valor valido para left.
+top es un parametro valido.
+10 es un valor valido para top.
+right es un parametro valido.
+150 es un valor valido para right.
+bottom es un parametro valido.
+160 es un valor valido para bottom.
+brush es un parametro valido.
+[Fin de figura] Se ha formado la figura que abarca de las lineas 5 hasta la linea 6.
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\ki131886.inf_amd64_198d816404b4ec79\igdgmm32.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ntasn1.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\SysWOW64\ncrypt.dll'
+'Polyscript_Language.exe' (Win32): Unloaded 'C:\Windows\System32\DriverStore\FileRepository\ki131886.inf_amd64_198d816404b4ec79\igd10iumd32.dll'
+The thread 0x2324 has exited with code 0 (0x0).
+The thread 0x61b8 has exited with code 0 (0x0).
+The thread 0x5030 has exited with code 0 (0x0).
+The thread 0x51c4 has exited with code 0 (0x0).
+The thread 0x507c has exited with code 0 (0x0).
+The thread 0x2634 has exited with code 0 (0x0).
+The thread 0x40cc has exited with code 0 (0x0).
+The thread 0x5d58 has exited with code 0 (0x0).
+The thread 0x51cc has exited with code 0 (0x0).
+The thread 0x5f6c has exited with code 0 (0x0).
+The thread 0x462c has exited with code 0 (0x0).
+The thread 0x1e30 has exited with code 0 (0x0).
+The thread 0x3344 has exited with code 0 (0x0).
+The thread 0x4c38 has exited with code 0 (0x0).
+The thread 0x5dec has exited with code 0 (0x0).
+The thread 0x27c0 has exited with code 0 (0x0).
+The thread 0x5ac8 has exited with code 0 (0x0).
+The thread 0x6244 has exited with code 0 (0x0).
+The thread 0x61bc has exited with code 0 (0x0).
+The thread 0x3b44 has exited with code 0 (0x0).
+The thread 0x603c has exited with code 0 (0x0).
+The thread 0x269c has exited with code 0 (0x0).
+The thread 0x54cc has exited with code 0 (0x0).
+The thread 0x3cfc has exited with code 0 (0x0).
+The program '[22812] Polyscript_Language.exe' has exited with code 0 (0x0).

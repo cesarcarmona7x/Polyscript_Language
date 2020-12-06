@@ -1,0 +1,72 @@
+﻿Build started 24/11/2020 06:06:18 p. m..
+     1>Project "C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\vc8\ftgl_dll.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I/include /I../../src /I../ /ZI /nologo /W3 /WX- /Od /Oy- /D _DEBUG /D WIN32 /D _WINDOWS /D _USRDLL /D FTGL_LIBRARY /D _VC80_UPGRADE=0x0600 /D _WINDLL /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"./Debug/" /Fd"./Debug/vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\src\FTBuffer.cpp ..\..\src\FTCharmap.cpp ..\..\src\FTContour.cpp ..\..\src\FTFace.cpp ..\..\src\FTFont\FTBitmapFont.cpp ..\..\src\FTFont\FTBufferFont.cpp ..\..\src\FTFont\FTExtrudeFont.cpp ..\..\src\FTFont\FTFont.cpp ..\..\src\FTFont\FTFontGlue.cpp ..\..\src\FTFont\FTOutlineFont.cpp ..\..\src\FTFont\FTPixmapFont.cpp ..\..\src\FTFont\FTPolygonFont.cpp ..\..\src\FTFont\FTTextureFont.cpp ..\..\src\FTGlyphContainer.cpp ..\..\src\FTGlyph\FTBitmapGlyph.cpp ..\..\src\FTGlyph\FTBufferGlyph.cpp ..\..\src\FTGlyph\FTExtrudeGlyph.cpp ..\..\src\FTGlyph\FTGlyph.cpp ..\..\src\FTGlyph\FTGlyphGlue.cpp ..\..\src\FTGlyph\FTOutlineGlyph.cpp ..\..\src\FTGlyph\FTPixmapGlyph.cpp ..\..\src\FTGlyph\FTPolygonGlyph.cpp ..\..\src\FTGlyph\FTTextureGlyph.cpp ..\..\src\FTLayout\FTLayout.cpp ..\..\src\FTLayout\FTLayoutGlue.cpp ..\..\src\FTLayout\FTSimpleLayout.cpp ..\..\src\FTLibrary.cpp ..\..\src\FTPoint.cpp ..\..\src\FTSize.cpp ..\..\src\FTVectoriser.cpp
+         FTVectoriser.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTSize.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftsize.h(30): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTPoint.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTLibrary.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftlibrary.h(29): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTSimpleLayout.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTLayoutGlue.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTLayout.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTTextureGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTPolygonGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTPixmapGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTOutlineGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTGlyphGlue.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTExtrudeGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTBufferGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTBitmapGlyph.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTGlyphContainer.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTTextureFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTPolygonFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTPixmapFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         Generating Code...
+         Compiling...
+         FTOutlineFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTFontGlue.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTExtrudeFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTBufferFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTBitmapFont.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTFace.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftface.h(29): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTContour.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTCharmap.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftface.h(29): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         FTBuffer.cpp
+     1>c:\users\cesar\downloads\ftgl-2.1.3~rc5\src\ftgl\ftgl.h(32): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\vc8\ftgl_dll.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:03.80

@@ -1,0 +1,11 @@
+El proyecto requiere las siguientes librerías para poder ser compilado:
+-Boost 1.66.0 https://www.boost.org/users/history/version_1_66_0.html
+-FTGL https://sourceforge.net/projects/ftgl/ (Se anexó una versión ligeramente modificada para el proyecto).
+-STB https://github.com/nothings/stb
+-GLEW http://glew.sourceforge.net/
+(Buscar cómo incluir archivos .h y hacer link del .lib en Visual Studio)
+
+El uso de DirectX 11 hace que requiera mínimo Windows 7 para ejecutar el proyecto.
+Requiere DebugView para comprobar el compilador fuera de Visual Studio (hasta que cambie el logger) https://docs.microsoft.com/en-us/sysinternals/downloads/debugview
+El ejecutable correcto para ejecutar fuera de Visual Studio es el que está en la segunda carpeta de Polyscript_Variable
+Se usó Visual Studio 2012 para la compilación del proyecto. Cualquier versión superior debería funcionar.

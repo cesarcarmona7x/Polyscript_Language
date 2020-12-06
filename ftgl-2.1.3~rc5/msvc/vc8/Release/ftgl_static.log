@@ -1,0 +1,75 @@
+﻿Build started 25/11/2020 02:01:35 a. m..
+     1>Project "C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\vc8\ftgl_static.vcxproj" on node 3 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I../ /I../../src/ /I"C:\Users\cesar\freetype-windows-binaries\include" /Zi /nologo /W3 /WX- /O2 /Oy- /GL /D WIN32 /D NDEBUG /D _LIB /D FTGL_LIBRARY_STATIC /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\src\FTBuffer.cpp ..\..\src\FTCharmap.cpp ..\..\src\FTContour.cpp ..\..\src\FTFace.cpp ..\..\src\FTGlyphContainer.cpp ..\..\src\FTLibrary.cpp ..\..\src\FTPoint.cpp ..\..\src\FTSize.cpp ..\..\src\FTVectoriser.cpp ..\..\src\FTFont\FTBitmapFont.cpp ..\..\src\FTFont\FTBufferFont.cpp ..\..\src\FTFont\FTExtrudeFont.cpp ..\..\src\FTFont\FTFont.cpp ..\..\src\FTFont\FTFontGlue.cpp ..\..\src\FTFont\FTOutlineFont.cpp ..\..\src\FTFont\FTPixmapFont.cpp ..\..\src\FTFont\FTPolygonFont.cpp ..\..\src\FTFont\FTTextureFont.cpp ..\..\src\FTGlyph\FTBitmapGlyph.cpp ..\..\src\FTGlyph\FTBufferGlyph.cpp ..\..\src\FTGlyph\FTExtrudeGlyph.cpp ..\..\src\FTGlyph\FTGlyph.cpp ..\..\src\FTGlyph\FTGlyphGlue.cpp ..\..\src\FTGlyph\FTOutlineGlyph.cpp ..\..\src\FTGlyph\FTPixmapGlyph.cpp ..\..\src\FTGlyph\FTPolygonGlyph.cpp ..\..\src\FTGlyph\FTTextureGlyph.cpp ..\..\src\FTLayout\FTLayout.cpp ..\..\src\FTLayout\FTLayoutGlue.cpp ..\..\src\FTLayout\FTSimpleLayout.cpp
+         FTBuffer.cpp
+         FTCharmap.cpp
+         FTContour.cpp
+         FTFace.cpp
+         FTGlyphContainer.cpp
+         FTLibrary.cpp
+         FTPoint.cpp
+         FTSize.cpp
+         FTVectoriser.cpp
+         FTBitmapFont.cpp
+         FTBufferFont.cpp
+         FTExtrudeFont.cpp
+         FTFont.cpp
+         FTFontGlue.cpp
+         FTOutlineFont.cpp
+         FTPixmapFont.cpp
+         FTPolygonFont.cpp
+         FTTextureFont.cpp
+         FTBitmapGlyph.cpp
+         FTBufferGlyph.cpp
+     1>..\..\src\FTGlyph\FTBufferGlyph.cpp(100): warning C4018: '<' : signed/unsigned mismatch
+     1>..\..\src\FTGlyph\FTBufferGlyph.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+         Compiling...
+         FTExtrudeGlyph.cpp
+         FTGlyph.cpp
+         FTGlyphGlue.cpp
+         FTOutlineGlyph.cpp
+         FTPixmapGlyph.cpp
+         FTPolygonGlyph.cpp
+         FTTextureGlyph.cpp
+         FTLayout.cpp
+         FTLayoutGlue.cpp
+         FTSimpleLayout.cpp
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1299,5): warning MSB8012: TargetPath(C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\vc8\Release\ftgl_static.lib) does not match the Library's OutputFile property value (C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\build\ftgl_static.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"../build/ftgl_static.lib" /LIBPATH:"C:\Users\cesar\freetype-windows-binaries\release dll\win32" /NOLOGO /LTCG Release\FTBuffer.obj
+         Release\FTCharmap.obj
+         Release\FTContour.obj
+         Release\FTFace.obj
+         Release\FTGlyphContainer.obj
+         Release\FTLibrary.obj
+         Release\FTPoint.obj
+         Release\FTSize.obj
+         Release\FTVectoriser.obj
+         Release\FTBitmapFont.obj
+         Release\FTBufferFont.obj
+         Release\FTExtrudeFont.obj
+         Release\FTFont.obj
+         Release\FTFontGlue.obj
+         Release\FTOutlineFont.obj
+         Release\FTPixmapFont.obj
+         Release\FTPolygonFont.obj
+         Release\FTTextureFont.obj
+         Release\FTBitmapGlyph.obj
+         Release\FTBufferGlyph.obj
+         Release\FTExtrudeGlyph.obj
+         Release\FTGlyph.obj
+         Release\FTGlyphGlue.obj
+         Release\FTOutlineGlyph.obj
+         Release\FTPixmapGlyph.obj
+         Release\FTPolygonGlyph.obj
+         Release\FTTextureGlyph.obj
+         Release\FTLayout.obj
+         Release\FTLayoutGlue.obj
+         Release\FTSimpleLayout.obj
+         ftgl_static.vcxproj -> C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\vc8\Release\ftgl_static.lib
+     1>Done Building Project "C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\vc8\ftgl_static.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:12.64

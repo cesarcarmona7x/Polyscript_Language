@@ -65,7 +65,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
          * @param extraSpace The amount of extra space to distribute amongst
          *                   the characters.
          */
-        virtual void RenderSpace(const char *string, const int len,
+        virtual void RenderSpace(const char *string, const int len, const int lineNumber,
                                  FTPoint position, int renderMode,
                                  const float extraSpace);
 
@@ -76,12 +76,13 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
          * @param string   A buffer of wchar_t characters to output.
          * @param len  The length of the string. If < 0 then all characters
          *             will be displayed until a null character is encountered.
+		 * @param lineNumber The number of the line. This is to facilitate the text highlighting via regex.
          * @param position TODO
          * @param renderMode Render mode to display
          * @param extraSpace The amount of extra space to distribute amongst
          *                   the characters.
          */
-        virtual void RenderSpace(const wchar_t *string, const int len,
+        virtual void RenderSpace(const wchar_t *string, const int len, const int lineNumber,
                                  FTPoint position, int renderMode,
                                  const float extraSpace);
 
@@ -135,6 +136,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
          * @param buf      A pointer to an array of character data.
          * @param len  The length of the string. If < 0 then all characters
          *             will be displayed until a null character is encountered.
+		 * @param lineNumber The number of the line. This is to facilitate the text highlighting via regex.
          * @param position TODO
          * @param renderMode  Render mode to display
          * @param RemainingWidth The amount of extra space left on the line.
@@ -146,7 +148,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
          *                   will be expanded.
          */
         void OutputWrapped(const char *buf, const int len,
-                           FTPoint position, int renderMode,
+                           const int lineNumber, FTPoint position, int renderMode,
                            const float RemainingWidth, FTBBox *bounds);
 
         /**
@@ -156,6 +158,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
          * @param buf      A pointer to an array of character data.
          * @param len  The length of the string. If < 0 then all characters
          *             will be displayed until a null character is encountered.
+		 * @param lineNumber The number of the line. This is to facilitate the text highlighting via regex.
          * @param position TODO
          * @param renderMode  Render mode to display
          * @param RemainingWidth The amount of extra space left on the line.
@@ -167,7 +170,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
          *                   will be expanded.
          */
         void OutputWrapped(const wchar_t *buf, const int len,
-                           FTPoint position, int renderMode,
+                           const int lineNumber, FTPoint position, int renderMode,
                            const float RemainingWidth, FTBBox *bounds);
 
         /**
@@ -200,6 +203,11 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
 		*/
 		FTGL::WrapTextOptions wrapTextOption;
 
+		/**
+		* The ranges of color within the text.
+		*/
+		std::vector<FTGL::FontColorRange> colorRanges;
+
         /* Internal generic BBox() implementation */
         template <typename T>
         inline FTBBox BBoxI(const T* string, const int len, FTPoint position);
@@ -211,7 +219,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
 
         /* Internal generic RenderSpace() implementation */
         template <typename T>
-        inline void RenderSpaceI(const T* string, const int len,
+        inline void RenderSpaceI(const T* string, const int len, const int lineNumber,
                                  FTPoint position, int renderMode,
                                  const float extraSpace);
 
@@ -222,7 +230,7 @@ class FTSimpleLayoutImpl : public FTLayoutImpl
 
         /* Internal generic OutputWrapped() implementation */
         template <typename T>
-        void OutputWrappedI(const T* buf, const int len, FTPoint position,
+        void OutputWrappedI(const T* buf, const int len, const int lineNumber, FTPoint position,
                             int renderMode, const float RemainingWidth,
                             FTBBox *bounds);
 };

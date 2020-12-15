@@ -176,13 +176,17 @@ namespace OpenGLUI{
 		}
 		glfont->FaceSize((int)(textsize*(96.f/72.f)));
 		textlayout=new FTSimpleLayout();
-		textlayout->SetLineLength(1280.f);
+		textlayout->SetLineLength(getBounds().right-getBounds().left);
 		textlayout->SetFont(glfont);
 		textlayout->SetAlignment(FTGL::ALIGN_LEFT);
 		textlayout->SetLineSpacing(0.6f);
 		textlayout->SetWrapTextOption(FTGL::WRAP_ONLYNEWLINE);
 	}
 	void GLTextBox::draw(std::shared_ptr<GLHandle>& gl){
+		textlayout->ClearTextColorRanges();
+		for(int i=0;i<rangesColor.size();i++){
+			textlayout->AddTextColorRange(rangesColor.at(i));
+		}
 		GLuint texture=0;
 		UINT bufferSize=0;
 		glEnable(GL_TEXTURE_2D);
@@ -233,7 +237,7 @@ namespace OpenGLUI{
 		glPixelTransferf(GL_GREEN_BIAS, fRGBA[1] - 1);
 		glPixelTransferf(GL_BLUE_BIAS, fRGBA[2] - 1);
 		glPixelTransferf(GL_ALPHA_BIAS,(fRGBA[3]*opacity)-1);
-		textlayout->Render(getText().c_str(),getText().length(),FTPoint(0,687-getBounds().top,0),FTGL::RENDER_FRONT|FTGL::RENDER_BACK);
+		textlayout->Render(getText().c_str(),getText().length(),FTPoint(0,687-getBounds().top,0),FTGL::RENDER_ALL);
 		glPopAttrib();
 		glDisable(GL_SCISSOR_TEST);
 		glPopMatrix();

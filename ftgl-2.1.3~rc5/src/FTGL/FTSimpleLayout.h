@@ -33,6 +33,7 @@
 #ifndef __FTSimpleLayout__
 #define __FTSimpleLayout__
 
+
 #ifdef __cplusplus
 
 
@@ -176,6 +177,23 @@ class FTGL_EXPORT FTSimpleLayout : public FTLayout
 		* @return The selected text wrap option.
 		*/
 		FTGL::WrapTextOptions GetWrapTextOption() const;
+
+		/**
+		* @param ColorRange A struct containing the range of text you wish to color.
+		*/
+		void AddTextColorRange(FTGL::FontColorRange Range);
+
+		/**
+		* @return The color properties for that range of text.
+		* @param pos The position in the vector that you want to retrieve.
+		*/
+		FTGL::FontColorRange GetTextColorRangeAtPosition(int Pos) const;
+
+		/**
+		* Clear all the text ranges
+		*/
+		void ClearTextColorRanges();
+
 };
 
 #endif //__cplusplus

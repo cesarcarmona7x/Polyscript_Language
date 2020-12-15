@@ -29,6 +29,11 @@ ComPtr<ID2D1SolidColorBrush> paramBrush;
 ComPtr<ID2D1SolidColorBrush> drawModeBrush;
 ComPtr<ID2D1SolidColorBrush> typeBrush;
 ComPtr<ID2D1SolidColorBrush> variableBrush;
+float reservedColor[4]={0.f,0.f,1.f,1.f};
+float paramColor[4]={128.f/255.f,128.f/255.f,128.f/255.f,1.f};
+float drawModeColor[4]={111.f/255.f,0.f,138.f/255.f,1.f};
+float typeColor[4]={0.f,128.f/255.f,0.f,1.f};
+float variableColor[4]={43.f/255.f,145.f/255.f,171.f/255.f,1.f};
 std::thread textcolorthread;
 void textColorThread(){
 	using namespace boost::xpressive;
@@ -129,7 +134,108 @@ void textColorThread(){
 					}
 				}//Resaltar valores de type
 			}//Revisar que el texto del TextBox no sea nulo.
-		}
+		}//Modo Direct2D
+		else if(renderType==POLYSCRIPT_RENDER_OPENGL&&needsRecreation){
+			rendererOpenGL.textBox->rangesColor.clear();
+			if(rendererOpenGL.textBox->getText().length()!=0){
+				const std::wstring text=rendererOpenGL.textBox->getText();
+				wsmatch matcher;
+				wsregex variabledeclaration=wsregex::compile(L"^([A-Za-z0-9_ñ]+)[\\s|\\*|&]?[\\=].*");
+				std::wstring line;
+				std::wistringstream stream(text);
+				std::vector<std::wstring>variableNames;
+				std::vector<std::wstring>valueNames;
+				int lineNumber=0;
+				while(std::getline(stream,line)){
+					if(regex_match(line,matcher,variabledeclaration)){
+						std::wstring variableName(matcher[1]);
+						variableNames.push_back(variableName);
+					}//Buscar posibles variables y sus valores
+					if(variableNames.size()!=0){
+						for(int i=0;i<variableNames.size();i++){
+							int pos1=0;
+							int pos2=0;
+							while((pos1=line.find(variableNames.at(i),pos1))!=std::wstring::npos){
+								pos2=pos1+variableNames.at(i).length();
+								FTGL::FontColorRange color;
+								color.startPosition=pos1;
+								color.length=(pos2-pos1)-1;
+								color.lineNumber=lineNumber;
+								memcpy(color.color,variableColor,sizeof(variableColor));
+								rendererOpenGL.textBox->rangesColor.push_back(color);
+								pos1=pos2;
+							}
+						}
+					}//Resaltar nombres de variable
+					for(int i=0;i<parser.palabras_reservadas.size();i++){
+						int pos1=0;
+						int pos2=0;
+						while((pos1=line.find(parser.palabras_reservadas.at(i),pos1))!=std::wstring::npos){
+							pos2=pos1+parser.palabras_reservadas.at(i).length();
+							FTGL::FontColorRange color;
+							color.startPosition=pos1;
+							color.lineNumber=lineNumber;
+							color.length=(pos2-pos1)-1;
+							memcpy(color.color,reservedColor,sizeof(reservedColor));
+							rendererOpenGL.textBox->rangesColor.push_back(color);
+							pos1=pos2;
+						}
+					}//Resaltar palabras reservadas
+					for(int i=0;i<parser.parametros_lexico.size();i++){
+						std::wstring regparam(std::wstring(L"[\\(|,].*(")+parser.parametros_lexico.at(i)+std::wstring(L").*[\\=]"));
+						wsregex isparam=wsregex::compile(regparam);
+						match_results<std::wstring::const_iterator>mr;
+						std::wstring::const_iterator startPos=line.begin();
+						while(regex_search(startPos,line.end(),mr,isparam)){
+							int pos1=std::distance<std::wstring::const_iterator>(line.begin(),mr[1].first);
+							int pos2=std::distance<std::wstring::const_iterator>(line.begin(),mr[1].second);
+							FTGL::FontColorRange color;
+							color.startPosition=pos1;
+							color.lineNumber=lineNumber;
+							color.length=(pos2-pos1)-1;
+							memcpy(color.color,paramColor,sizeof(paramColor));
+							rendererOpenGL.textBox->rangesColor.push_back(color);
+							startPos=mr[0].second;
+						}
+					}//Resaltar parámetros
+					for(int i=0;i<parser.dibujado_lexico.size();i++){
+						std::wstring regdrawmod(std::wstring(L"[\\=|,].*[\"]?.*(")+parser.dibujado_lexico.at(i)+std::wstring(L").*[\"]?"));
+						wsregex isdrawmode=wsregex::compile(regdrawmod);
+						match_results<std::wstring::const_iterator>mr;
+						std::wstring::const_iterator startPos=line.begin();
+						while(regex_search(startPos,line.end(),mr,isdrawmode)){
+							int pos1=std::distance<std::wstring::const_iterator>(line.begin(),mr[1].first)-1;
+							int pos2=std::distance<std::wstring::const_iterator>(line.begin(),mr[1].second)+1;
+							FTGL::FontColorRange color;
+							color.startPosition=pos1;
+							color.lineNumber=lineNumber;
+							color.length=(pos2-pos1)-1;
+							memcpy(color.color,drawModeColor,sizeof(drawModeColor));
+							rendererOpenGL.textBox->rangesColor.push_back(color);
+							startPos=mr[0].second;				
+						}
+					}//Resaltar valores de drawMode
+					for(int i=0;i<parser.figuras_lexico.size();i++){
+						std::wstring regtype(std::wstring(L"[\\=|,].*[\"]?.*(")+parser.figuras_lexico.at(i)+std::wstring(L").*[\"]?"));
+						wsregex istype=wsregex::compile(regtype);
+						match_results<std::wstring::const_iterator>mr;
+						std::wstring::const_iterator startPos=line.begin();
+						while(regex_search(startPos,line.end(),mr,istype)){
+							int pos1=std::distance<std::wstring::const_iterator>(line.begin(),mr[1].first)-1;
+							int pos2=std::distance<std::wstring::const_iterator>(line.begin(),mr[1].second)+1;
+							FTGL::FontColorRange color;
+							color.startPosition=pos1;
+							color.lineNumber=lineNumber;
+							color.length=(pos2-pos1)-1;
+							memcpy(color.color,typeColor,sizeof(typeColor));
+							rendererOpenGL.textBox->rangesColor.push_back(color);
+							startPos=mr[0].second;				
+						}
+					}//Resaltar valores de type
+					lineNumber++;
+				}//Dividir el texto por líneas para facilitar el trabajo
+			}//Revisar que el texto del TextBox no sea nulo.
+		}//Modo OpenGL
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000/60));
 	}
 }//Hilo para colorear el texto

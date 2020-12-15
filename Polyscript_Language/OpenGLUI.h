@@ -482,6 +482,7 @@ namespace OpenGLUI{
 		OpenGLUIDrawableItem* drawing;
 		FTGLPixmapFont* glfont;
 		FTSimpleLayout* textlayout;
+		std::vector<FTGL::FontColorRange>rangesColor;
 	protected:
 		std::vector<OpenGLUI::GL_WINDOW_STATES>states;
 		wchar_t* wndId;

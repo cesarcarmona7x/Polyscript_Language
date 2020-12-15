@@ -7,8 +7,6 @@ public:
 	std::map<std::wstring,PolyscriptVariable> variableBank;
 	//Aquí se almacenarán todas las referencias de Polyscript
 	std::map<std::wstring,PolyscriptRef> referenceBank;
-	//Aquí se almacenarán todos los punteros de Polyscript
-	std::map<std::wstring,PolyscriptPtr> pointerBank;
 	PolyscriptParser(){
 		const std::wstring figs_lexico[]={L"Square",L"Rectangle",L"RoundedRectangle",L"Triangle",L"Ellipse",L"Line",L"Polygon"};
 		const std::wstring param_lexico[]={L"radiusX",L"radiusY",L"color",L"left",L"top",L"right",L"bottom",L"x",L"y",L"width",L"height",L"type",L"brush",L"bitmap",L"gradient",L"opacity",L"drawMode"};

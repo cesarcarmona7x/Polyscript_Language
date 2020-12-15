@@ -138,6 +138,21 @@ FTGL::WrapTextOptions FTSimpleLayout::GetWrapTextOption() const
 }
 
 
+void FTSimpleLayout::AddTextColorRange(const FTGL::FontColorRange Range){
+	dynamic_cast<FTSimpleLayoutImpl*>(impl)->colorRanges.push_back(Range);
+}
+
+
+FTGL::FontColorRange FTSimpleLayout::GetTextColorRangeAtPosition(int Pos) const{
+	return dynamic_cast<FTSimpleLayoutImpl*>(impl)->colorRanges.at(Pos);
+}
+
+
+void FTSimpleLayout::ClearTextColorRanges(){
+	dynamic_cast<FTSimpleLayoutImpl*>(impl)->colorRanges.clear();
+}
+
+
 //
 //  FTSimpleLayoutImpl
 //
@@ -217,6 +232,7 @@ inline void FTSimpleLayoutImpl::WrapTextI(const T *buf, const int len,
 	int charCount = 0;         // number of characters so far on the line
 	int breakCharCount = 0;    // number of characters before the breakItr
 	float glyphWidth, advance;
+	int lineNumber = 0;
 	FTBBox glyphBounds;
 
 	// Reset the pen position
@@ -279,10 +295,10 @@ inline void FTSimpleLayoutImpl::WrapTextI(const T *buf, const int len,
 					++breakChar; --charCount;
 				}
 
-				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount,
+				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount, lineNumber,
 					//breakItr.getBufferFromHere() - lineStart.getBufferFromHere(),
 					position, renderMode, remainingWidth, bounds);
-
+				lineNumber++;
 				// Store the start of the next line
 				lineStart = breakChar;
 				// TODO: Is Height() the right value here?
@@ -324,10 +340,11 @@ inline void FTSimpleLayoutImpl::WrapTextI(const T *buf, const int len,
 				// move past the break character and don't count it on the next line either
 				++breakChar; --charCount;
 
-				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount,
+				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount, lineNumber,
 					//breakItr.getBufferFromHere() - lineStart.getBufferFromHere(),
 					position, renderMode, remainingWidth, bounds);
 
+				lineNumber++;
 				// Store the start of the next line
 				lineStart = breakChar;
 				// TODO: Is Height() the right value here?
@@ -377,7 +394,73 @@ inline void FTSimpleLayoutImpl::WrapTextI(const T *buf, const int len,
 					++breakChar; --charCount;
 				}
 
-				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount,
+				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount, lineNumber,
+					//breakItr.getBufferFromHere() - lineStart.getBufferFromHere(),
+					position, renderMode, remainingWidth, bounds);
+
+				lineNumber++;
+				// Store the start of the next line
+				lineStart = breakChar;
+				// TODO: Is Height() the right value here?
+				pen -= FTPoint(0, currentFont->LineHeight() * lineSpacing);
+				// The current width is the width since the last break
+				nextStart = wordLength + advance;
+				wordLength += advance;
+				currentWidth = wordLength + advance;
+				// Reset the safe break for the next line
+				breakItr = lineStart;
+				charCount -= breakCharCount;
+			}
+			else if(iswspace(*itr))
+			{
+				// This is the last word break position
+				wordLength = 0;
+				breakItr = itr;
+				breakCharCount = charCount;
+
+				// Check to see if this is the first whitespace character in a run
+				if(buf == itr.getBufferFromHere() || !iswspace(*prevItr))
+				{
+					// Record the width of the start of the block
+					breakWidth = currentWidth;
+				}
+			}
+			else
+			{
+				wordLength += advance;
+			}
+			break;
+		case FTGL::WRAP_ALL_WHOLE_WORD:
+			if((*itr == '\n'))
+			{
+				// A newline character has forced a line break.  Output the last
+				// line and start a new line after the break character.
+				// If we have not yet found a break, break on the last character
+				if((*itr == '\n'))
+				{
+					// Break on the previous character
+					breakItr = prevItr;
+					breakCharCount = charCount - 1;
+					breakWidth = prevWidth;
+					// None of the previous words will be carried to the next line
+					wordLength = 0;
+					// If the current character is a newline discard its advance
+					if(*itr == '\n') advance = 0;
+				}
+
+				float remainingWidth = lineLength - breakWidth;
+
+				// Render the current substring
+				FTUnicodeStringItr<T> breakChar = breakItr;
+				// move past the break character and don't count it on the next line either
+				++breakChar; --charCount;
+				// If the break character is a newline do not render it
+				if(*breakChar == '\n')
+				{
+					++breakChar; --charCount;
+				}
+
+				OutputWrapped(lineStart.getBufferFromHere(), breakCharCount, lineNumber,
 					//breakItr.getBufferFromHere() - lineStart.getBufferFromHere(),
 					position, renderMode, remainingWidth, bounds);
 
@@ -412,35 +495,6 @@ inline void FTSimpleLayoutImpl::WrapTextI(const T *buf, const int len,
 				wordLength += advance;
 			}
 			break;
-		case FTGL::WRAP_ALL_WHOLE_WORD:
-			// See if the current character is a space, a break or a regular character
-			if((currentWidth > lineLength))
-			{
-				// A non whitespace character has exceeded the line length.  Or a
-				// newline character has forced a line break, but won't break until the
-				// current character is a whitespace. Output the last
-				// line and start a new line after the break character.
-				// If we have not yet found a break, break on the last character
-				if(breakItr == lineStart && iswspace(*itr))
-				{
-					// This is the last word break position
-					wordLength = 0;
-					breakItr = itr;
-					breakCharCount = charCount;
-
-					// Check to see if this is the first whitespace character in a run
-					if(buf == itr.getBufferFromHere() || !iswspace(*prevItr))
-					{
-						// Record the width of the start of the block
-						breakWidth = currentWidth;
-					}
-				}
-			}
-			else
-			{
-				wordLength += advance;
-			}
-			break;
 		}
 	}
 
@@ -450,13 +504,13 @@ inline void FTSimpleLayoutImpl::WrapTextI(const T *buf, const int len,
 	if(alignment == FTGL::ALIGN_JUSTIFY)
 	{
 		alignment = FTGL::ALIGN_LEFT;
-		OutputWrapped(lineStart.getBufferFromHere(), -1, position, renderMode,
+		OutputWrapped(lineStart.getBufferFromHere(), -1, lineNumber, position, renderMode,
 			remainingWidth, bounds);
 		alignment = FTGL::ALIGN_JUSTIFY;
 	}
 	else
 	{
-		OutputWrapped(lineStart.getBufferFromHere(), -1, position, renderMode,
+		OutputWrapped(lineStart.getBufferFromHere(), -1, lineNumber, position, renderMode,
 			remainingWidth, bounds);
 	}
 }
@@ -479,7 +533,7 @@ void FTSimpleLayoutImpl::WrapText(const wchar_t* buf, const int len,
 
 
 template <typename T>
-inline void FTSimpleLayoutImpl::OutputWrappedI(const T *buf, const int len,
+inline void FTSimpleLayoutImpl::OutputWrappedI(const T *buf, const int len, const int lineNumber,
 											   FTPoint position, int renderMode,
 											   const float remaining,
 											   FTBBox *bounds)
@@ -525,29 +579,29 @@ inline void FTSimpleLayoutImpl::OutputWrappedI(const T *buf, const int len,
 	}
 	else
 	{
-		RenderSpace(buf, len, position, renderMode, distributeWidth);
+		RenderSpace(buf, len, lineNumber, position, renderMode, distributeWidth);
 	}
 }
 
 
-void FTSimpleLayoutImpl::OutputWrapped(const char *buf, const int len,
+void FTSimpleLayoutImpl::OutputWrapped(const char *buf, const int len, const int lineNumber,
 									   FTPoint position, int renderMode,
 									   const float remaining, FTBBox *bounds)
 {
-	OutputWrappedI(buf, len, position, renderMode, remaining, bounds);
+	OutputWrappedI(buf, len, lineNumber, position, renderMode, remaining, bounds);
 }
 
 
-void FTSimpleLayoutImpl::OutputWrapped(const wchar_t *buf, const int len,
+void FTSimpleLayoutImpl::OutputWrapped(const wchar_t *buf, const int len, const int lineNumber,
 									   FTPoint position, int renderMode,
 									   const float remaining, FTBBox *bounds)
 {
-	OutputWrappedI(buf, len, position, renderMode, remaining, bounds);
+	OutputWrappedI(buf, len, lineNumber, position, renderMode, remaining, bounds);
 }
 
 
 template <typename T>
-inline void FTSimpleLayoutImpl::RenderSpaceI(const T *string, const int len,
+inline void FTSimpleLayoutImpl::RenderSpaceI(const T *string, const int len, const int lineNumber,
 											 FTPoint position, int renderMode,
 											 const float extraSpace)
 {
@@ -584,24 +638,36 @@ inline void FTSimpleLayoutImpl::RenderSpaceI(const T *string, const int len,
 		{
 			pen += FTPoint(space, 0);
 		}
-
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
+		auto& it=std::find_if(colorRanges.begin(),colorRanges.end(),[&](FTGL::FontColorRange& other){
+			return i>=other.startPosition && i<=other.startPosition+other.length && lineNumber==other.lineNumber;
+		});
+		if(it!=colorRanges.end()){
+			int dist=std::distance(colorRanges.begin(),it);
+			FTGL::FontColorRange color=colorRanges.at(dist);
+			glPixelTransferf(GL_RED_BIAS, color.color[0] - 1);
+			glPixelTransferf(GL_GREEN_BIAS, color.color[1] - 1);
+			glPixelTransferf(GL_BLUE_BIAS, color.color[2] - 1);
+			glPixelTransferf(GL_ALPHA_BIAS,color.color[3]-1);
+		}
 		pen = currentFont->Render(itr.getBufferFromHere(), 1, pen, FTPoint(), renderMode);
+		glPopAttrib();
 	}
 }
 
 
-void FTSimpleLayoutImpl::RenderSpace(const char *string, const int len,
+void FTSimpleLayoutImpl::RenderSpace(const char *string, const int len, const int lineNumber,
 									 FTPoint position, int renderMode,
 									 const float extraSpace)
 {
-	RenderSpaceI(string, len, position, renderMode, extraSpace);
+	RenderSpaceI(string, len, lineNumber, position, renderMode, extraSpace);
 }
 
 
-void FTSimpleLayoutImpl::RenderSpace(const wchar_t *string, const int len,
+void FTSimpleLayoutImpl::RenderSpace(const wchar_t *string, const int len, const int lineNumber,
 									 FTPoint position, int renderMode,
 									 const float extraSpace)
 {
-	RenderSpaceI(string, len, position, renderMode, extraSpace);
+	RenderSpaceI(string, len, lineNumber, position, renderMode, extraSpace);
 }
 

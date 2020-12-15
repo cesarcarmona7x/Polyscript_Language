@@ -1,6 +1,7 @@
 #ifndef POLYSCRIPTVARIABLE_INCLUDED
 #define POLYSCRIPTVARIABLE_INCLUDED
 #include "stdafx.h"
+struct PolyscriptGradientStop;
 class PolyscriptVariable;
 class PolyscriptColor;
 class PolyscriptBrush;
@@ -27,6 +28,9 @@ public:
 	std::wstring getDataBitmap(){
 		return location;
 	}
+	std::vector<PolyscriptGradientStop> getDataGradientStop(){
+		return gradientStops;
+	}
 	std::wstring name;
 protected:
 	float r, g, b, a;//For type PolyscriptColor
@@ -34,18 +38,22 @@ protected:
 	float float_value;//For type PolyscriptFloat
 	int int_value;//For type PolyscriptInt
 	std::wstring location;//For type PolyscriptBitmap
+	std::vector<PolyscriptGradientStop> gradientStops;//For type PolyscriptGradient
 };
 class PolyscriptColor:public PolyscriptVariable{
 public:
 	PolyscriptColor(float r=1.f,float g=1.f,float b=1.f,float a=1.f);
 	~PolyscriptColor(){}
-private:
-
+};
+struct PolyscriptGradientStop{
+	PolyscriptColor color;
+	float positionX;
+	float positionY;
 };
 class PolyscriptBrush:public PolyscriptVariable{
 public:
 	PolyscriptBrush(PolyscriptColor color=PolyscriptColor());
-private:
+	~PolyscriptBrush(){}
 };
 class PolyscriptFloat:public PolyscriptVariable{
 public:
@@ -54,7 +62,6 @@ public:
 		this->float_value=value;
 	}
 	~PolyscriptFloat(){}
-private:
 };
 class PolyscriptInt:public PolyscriptVariable{
 public:
@@ -63,7 +70,6 @@ public:
 		this->int_value=int_value;
 	}
 	~PolyscriptInt(){}
-private:
 };
 
 class PolyscriptBitmap:public PolyscriptVariable{
@@ -72,13 +78,14 @@ public:
 		this->name=L"PolyscriptBitmap";
 		this->location=location;
 	}
-
-private:
 };
 class PolyscriptGradient:public PolyscriptVariable{
 public:
-
+	PolyscriptGradient(std::vector<PolyscriptGradientStop> gradientStops=std::vector<PolyscriptGradientStop>()){
+		this->name=L"PolyscriptGradient";
+		this->gradientStops=gradientStops;
+	}
+	~PolyscriptGradient(){}
 };
 typedef std::reference_wrapper<PolyscriptVariable> PolyscriptRef;
-typedef std::shared_ptr<PolyscriptVariable> PolyscriptPtr;
 #endif

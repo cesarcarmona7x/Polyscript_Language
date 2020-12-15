@@ -30,6 +30,10 @@
 
 /* We need the Freetype headers */
 #include <ft2build.h>
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <string.h>
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
 #include FT_OUTLINE_H
@@ -57,6 +61,14 @@ namespace FTGL
 		RENDER_SIDE  = 0x0004,
 		RENDER_ALL   = 0xffff
 	} RenderMode;
+
+	typedef struct
+	{
+		float color[4];
+		int lineNumber;
+		int startPosition;
+		int length;
+	}FontColorRange;
 
 	typedef enum
 	{

@@ -3,5 +3,7 @@ ref_amlo&=*años_que_le_quedan_de_gobierno_a_amlo
 color_rgba="0.0,1.0,0.2,0.4"
 brush_color=brush("0.0,1.0,0.2,0.4")
 rgba=color_rgba
+bmp=bitmap("C:/Users/Cesar/Fondos/Anime/kud.jpg")
+cool_gradient=gradient({"0.0,1.0,0.2,0.4";"0.0";"0.0"},{"0.5,1.0,0.7,1.0";"0.5";"0.5"})
 BeginFigure(type="RoundedRectangle",drawMode="Fill",radiusX="10.8",radiusY="5.3",color="0.0,1.0,1.0,1.0",left="10",top="10",right="150",bottom="160",brush=brush("0.0,1.0,1.0,1.0")):
 EndFigure

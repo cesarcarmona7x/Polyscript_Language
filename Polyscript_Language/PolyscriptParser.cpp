@@ -21,6 +21,8 @@ void PolyscriptParser::parseFile(){
 	wsregex isnumeric=wsregex::compile(L"[\\-+]?([\\d]+|[\\d]*\\.[\\d]+)");
 	wsregex colorregex=wsregex::compile(L"((([0-1]+)|([0-1]*)\\.([0-9]+)([,]?)){4})");
 	wsregex brushregex=wsregex::compile(L"^(brush)[\\(].*[\\)]$");
+	wsregex bitmapregex=wsregex::compile(L"^(bitmap)[\\(].*[\\)]$");
+	wsregex gradientregex=wsregex::compile(L"^(gradient)[\\(].*[\\)]$");
 	wsregex isint=wsregex::compile(L"[\\-+]?([\\d]+)");
 	wsregex isfloat=wsregex::compile(L"[\\-+]?([\\d]*\\.[\\d]+)");
 	bool foundbeginfigure=false,foundendfigure=false;
@@ -324,6 +326,47 @@ void PolyscriptParser::parseFile(){
 								}//Si el parámetro que contiene brush no es válido
 							}
 						}//Encontró una variable de tipo PolyscriptBrush
+						else if(regex_match(name_and_value.at(1),matcher,bitmapregex)){
+							OutputDebugString(L"Regex de bitmap. \n");
+							int pos1=name_and_value.at(1).find(L"(");
+							if(pos1!=std::wstring::npos){
+								pos1++;
+								int pos2=name_and_value.at(1).find(L")");
+								std::wstring value=name_and_value.at(1).substr(pos1,pos2-pos1);
+								//Supported image formats by STB_Image
+								wsregex isfilepath=wsregex::compile(L"([a-zA-Z]:[\\\|\\/])?(?:[a-zA-Z0-9]+[\\\|\\/])*([a-zA-Z0-9]+[\\.](JPG|jpg|JPEG|jpeg|PNG|png|BMP|bmp|TGA|tga|PSD|psd))");
+								if(regex_match(value,matcher,isfilepath)){
+									OutputDebugString(std::wstring(std::wstring(L"Se usará el archivo ubicado en ")+value+std::wstring(L" para el nuevo PolyscriptBitmap ")+name_and_value.at(0)+std::wstring(L".\n")).c_str());
+									PolyscriptBitmap bmp(value);
+									variableBank.insert(std::pair<std::wstring,PolyscriptBitmap>(name_and_value.at(0),bmp));
+								}//Si el parámetro que contiene bitmap es una ruta a una imagen
+								else{
+									OutputDebugString(std::wstring(std::wstring(L"[Error de compilación] Tienes un error en la línea ")+std::to_wstring(i+1)+std::wstring(L": El valor ")+value+std::wstring (L" no es válido para PolyscriptBitmap.\n")).c_str());
+								}//Si el parámetro que contiene bitmap no es válido
+							}
+						}//Encontró una variable de tipo PolyscriptBitmap
+						else if(regex_match(name_and_value.at(1),matcher,gradientregex)){
+							OutputDebugString(L"Regex de gradient. \n");
+							int pos1=name_and_value.at(1).find(L"(");
+							if(pos1!=std::wstring::npos){
+								pos1++;
+								int pos2=name_and_value.at(1).find(L")");
+								std::wstring value=name_and_value.at(1).substr(pos1,pos2-pos1);
+								wsregex isgradientstop=wsregex::compile(L"([{].*[}]([,]?))+");
+								std::wstring::const_iterator startPos=value.begin();
+								if(regex_match(value,matcher,isgradientstop)){
+									OutputDebugString(std::wstring(std::wstring(L"Se usarán los gradientes ")+value+std::wstring(L" para el nuevo PolyscriptGradient ")+name_and_value.at(0)+std::wstring(L".\n")).c_str());
+									std::vector<std::wstring>gradientStrings;
+									boost::algorithm::split_regex(gradientStrings,value,boost::wregex(L"[}][\\,]"));
+									for(std::wstring ws:gradientStrings){
+										MessageBox(NULL,ws.c_str(),L"gradient",MB_OK);
+									}
+								}//Si el parámetro que contiene gradient es un grupo de 1 o más gradientes
+								else{
+									OutputDebugString(std::wstring(std::wstring(L"[Error de compilación] Tienes un error en la línea ")+std::to_wstring(i+1)+std::wstring(L": El valor ")+value+std::wstring (L" no es válido para PolyscriptGradient.\n")).c_str());
+								}//Si el parámetro que contiene gradient no es válido
+							}
+						}//Encontró una variable de tipo PolyscriptGradient
 						else if(regex_match(name_and_value.at(1),matcher,isint)){
 							OutputDebugString(L"Regex de int. \n");
 							int value=_wtoi(name_and_value.at(1).c_str());
@@ -333,7 +376,7 @@ void PolyscriptParser::parseFile(){
 						}//Encontró una variable de tipo PolyscriptInt
 						else if(regex_match(name_and_value.at(1),matcher,isfloat)){
 							OutputDebugString(L"Regex de float. \n");
-							float value=_wtoi(name_and_value.at(1).c_str());
+							float value=_wtof(name_and_value.at(1).c_str());
 							PolyscriptFloat floating(value);
 							variableBank.insert(std::pair<std::wstring,PolyscriptFloat>(name_and_value.at(0),floating));
 							float c=variableBank[name_and_value.at(0)].getDataFloat();

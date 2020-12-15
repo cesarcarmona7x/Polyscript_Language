@@ -7,5 +7,5 @@ El proyecto requiere las siguientes librerías para poder ser compilado:
 
 El uso de DirectX 11 hace que requiera mínimo Windows 7 para ejecutar el proyecto.
 Requiere DebugView para comprobar el compilador fuera de Visual Studio (hasta que cambie el logger) https://docs.microsoft.com/en-us/sysinternals/downloads/debugview
-El ejecutable correcto para ejecutar fuera de Visual Studio es el que está en la segunda carpeta de Polyscript_Variable
+El ejecutable correcto para ejecutar fuera de Visual Studio es el que está en la segunda carpeta de Polyscript_Language
 Se usó Visual Studio 2012 para la compilación del proyecto. Cualquier versión superior debería funcionar.

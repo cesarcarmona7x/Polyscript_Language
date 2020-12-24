@@ -2,7 +2,7 @@
 TextRendererDX::TextRendererDX(){
 	textBox=std::shared_ptr<TextBox>(new TextBox());
 	textBox->setPadding(0,0);
-	textBox->setEditable(false);
+	textBox->setEditable(true);
 	textBox->setEnabled(true);
 	textBox->setFont(L"Courier New");
 	textBox->setForeground(0.f,0.f,0.f,1.f);

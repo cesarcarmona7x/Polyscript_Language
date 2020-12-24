@@ -1,5 +1,4 @@
 ﻿#include "stdafx.h"
-typedef float color_float[4];
 void PolyscriptParser::readFile(wchar_t* polyfile){
 	std::wifstream file(polyfile);
 	file.imbue(std::locale(file.getloc(),new std::codecvt_utf8<wchar_t,0x10ffff,std::consume_header>));

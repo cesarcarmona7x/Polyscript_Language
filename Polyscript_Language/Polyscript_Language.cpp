@@ -24,6 +24,7 @@ HWND hwnd;
 HWND leftPanel;
 HWND rightPanel;
 WNDPROC editProc;
+std::wstring currentFilename=L"";
 ComPtr<ID2D1SolidColorBrush> reservedBrush;
 ComPtr<ID2D1SolidColorBrush> paramBrush;
 ComPtr<ID2D1SolidColorBrush> drawModeBrush;
@@ -448,6 +449,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 			SetCurrentDirectory(curDir);//Regresa al directorio original
 			break;
+		case IDM_SAVE:
+			break;
+		case IDM_SAVEAS:
+			break;
 		case IDM_CLOSE:
 			ShowWindow(leftPanel,SW_HIDE);
 			ShowWindow(rightPanel,SW_HIDE);
@@ -483,6 +488,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					DWRITE_HIT_TEST_METRICS htmetrics;
 					rendererDirectX.textBox->textlayout->HitTestPoint(x,y,&rendererDirectX.textBox->trail,&rendererDirectX.textBox->inside,&htmetrics);
 					rendererDirectX.textBox->caretPos=htmetrics.textPosition;
+					if(rendererDirectX.textBox->trail)rendererDirectX.textBox->caretPos++;
+					rendererDirectX.textBox->trail=false;
 					rendererDirectX.textBox->measureCaret(rendererDirectX.textBox->caretPos);
 				}
 				else{
@@ -502,45 +509,118 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 		}
 		break;
+	case WM_KEYDOWN:
+		switch(wParam){
+		case VK_LEFT://Mover carrete a la izquierda
+			switch(renderType){
+			case POLYSCRIPT_RENDER_DIRECT2D:
+				if(rendererDirectX.textBox->hasFocus()){
+					std::wstring txt=rendererDirectX.textBox->getText();
+					if(rendererDirectX.textBox->caretPos>0)rendererDirectX.textBox->caretPos--;
+					rendererDirectX.textBox->measureCaret(rendererDirectX.textBox->caretPos);
+				}
+				break;
+			case POLYSCRIPT_RENDER_OPENGL:
+				if(rendererOpenGL.textBox->hasFocus()){
+					std::wstring txt=rendererOpenGL.textBox->getText();
+					if(rendererOpenGL.textBox->caretPos>0)rendererOpenGL.textBox->caretPos--;
+					//rendererOpenGL.textBox->measureCaret(rendererOpenGL.textBox->caretPos);
+				}
+				break;
+			}
+			break;
+		case VK_RIGHT://Mover carrete a la derecha
+			switch(renderType){
+			case POLYSCRIPT_RENDER_DIRECT2D:
+				if(rendererDirectX.textBox->hasFocus()){
+					std::wstring txt=rendererDirectX.textBox->getText();
+					if(rendererDirectX.textBox->caretPos<txt.length())rendererDirectX.textBox->caretPos++;
+					rendererDirectX.textBox->measureCaret(rendererDirectX.textBox->caretPos);
+				}
+				break;
+			case POLYSCRIPT_RENDER_OPENGL:
+				if(rendererOpenGL.textBox->hasFocus()){
+					std::wstring txt=rendererOpenGL.textBox->getText();
+					if(rendererOpenGL.textBox->caretPos<txt.length())rendererOpenGL.textBox->caretPos++;
+					//rendererOpenGL.textBox->measureCaret(rendererOpenGL.textBox->caretPos);
+				}
+				break;
+			}
+			break;
+		case 0x53://S
+			if(GetKeyState(VK_CONTROL)&0x8000){
+				if(GetKeyState(VK_SHIFT)&0x8000){
+					MessageBox(hWnd,L"Save as",L"Save as",MB_OK);
+				}
+				else{
+					MessageBox(hWnd,L"Save",L"Save",MB_OK);
+				}
+			}
+			break;
+		case VK_F5://Recrear
+			SendMessage(hWnd,WM_COMMAND,IDM_RECREATE,0);
+			break;
+		case VK_F6://Alternar modo de renderizado
+			switch(renderType){
+			case POLYSCRIPT_RENDER_DIRECT2D:
+				SendMessage(hWnd,WM_COMMAND,IDM_RENDERGL,0);
+				break;
+			case POLYSCRIPT_RENDER_OPENGL:
+				SendMessage(hWnd,WM_COMMAND,IDM_RENDERDX,0);
+				break;
+			}
+			break;
+		case VK_DELETE:
+			switch(renderType){
+			case POLYSCRIPT_RENDER_DIRECT2D:
+				if(rendererDirectX.textBox->hasFocus()){
+					std::wstring txt=rendererDirectX.textBox->getText();
+					if(rendererDirectX.textBox->caretPos<txt.length()){
+						txt.erase(rendererDirectX.textBox->caretPos,1);
+					}
+					rendererOpenGL.textBox->setText(txt);
+					rendererDirectX.textBox->setText(txt);
+					rendererDirectX.textBox->measureCaret(rendererDirectX.textBox->caretPos);
+				}
+				break;
+			case POLYSCRIPT_RENDER_OPENGL:
+				if(rendererOpenGL.textBox->hasFocus()){
+					std::wstring txt=rendererOpenGL.textBox->getText();
+					if(rendererOpenGL.textBox->caretPos<txt.length()){
+						txt.erase(rendererOpenGL.textBox->caretPos,1);
+					}
+					rendererOpenGL.textBox->setText(txt);
+					rendererDirectX.textBox->setText(txt);
+					//rendererOpenGL.textBox->measureCaret(rendererOpenGL.textBox->caretPos);
+				}
+				break;
+			}
+			break;
+		}
+		break;
 	case WM_CHAR:
 		switch(renderType){
 		case POLYSCRIPT_RENDER_DIRECT2D:
 			if(rendererDirectX.textBox->hasFocus()){
 				std::wstring txt=rendererDirectX.textBox->getText();
 				switch(wParam){
-				case 0x08:
-					if(txt.length()>0){
-						if(rendererDirectX.textBox->trail){
-							txt.erase(rendererDirectX.textBox->caretPos,1);
-						}
-						else{
-							txt.erase(rendererDirectX.textBox->caretPos-1,1);
-						}
-						if(rendererDirectX.textBox->caretPos>0){
-							rendererDirectX.textBox->caretPos--;
-						}
-						else{
-							rendererDirectX.textBox->trail=false;
-						}
+				case 0x08://backspace
+					if(rendererDirectX.textBox->caretPos>0){
+						txt.erase(rendererDirectX.textBox->caretPos-1,1);
+						rendererDirectX.textBox->caretPos--;
 					}
 					break;
-				case 0x09:
+				case 0x09://tab. Inserta 4 espacios
 					txt.insert(rendererDirectX.textBox->caretPos,L"    ");
 					rendererDirectX.textBox->caretPos+=4;
 					break;
-				case 0x0D:
-					txt.insert(rendererDirectX.textBox->caretPos+1,L"\n");
-					rendererDirectX.textBox->caretPos++;
-
+				case 0x0D://enter
+					txt.insert(rendererDirectX.textBox->caretPos,L"\n");
+					rendererDirectX.textBox->caretPos+=std::wstring(L"\n").length();
 					break;
-				default:
+				default://cualquier caracter
 					newcharacter=(wchar_t)wParam;
-					if(rendererDirectX.textBox->trail){
-						txt.insert(txt.begin()+rendererDirectX.textBox->caretPos+1,1,newcharacter);
-					}
-					else{
-						txt.insert(txt.begin()+rendererDirectX.textBox->caretPos,1,newcharacter);
-					}
+					txt.insert(txt.begin()+rendererDirectX.textBox->caretPos,1,newcharacter);
 					rendererDirectX.textBox->caretPos++;
 				}
 				rendererOpenGL.textBox->setText(txt);
@@ -552,17 +632,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if(rendererOpenGL.textBox->hasFocus()){
 				std::wstring txt=rendererOpenGL.textBox->getText();
 				switch(wParam){
-				case 0x08:
+				case 0x08://backspace
 					if(txt.length()>0)txt.pop_back();
 					break;
-				case 0x09:
+				case 0x09://tab. Inserta 4 espacios
 					txt.append(L"    ");
-
 					break;
-				case 0x0D:
+				case 0x0D://enter
 					txt.append(L"\n");
 					break;
-				default:
+				default://cualquier caracter
 					newcharacter=(wchar_t)wParam;
 					txt.append(1,newcharacter);
 				}

@@ -1,21 +1,32 @@
-﻿Build started 14/12/2020 04:58:19 p. m..
+﻿Build started 24/12/2020 12:19:31 a. m..
      1>Project "C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Polyscript_Language\Polyscript_Language.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\cesar\Downloads\glew-2.1.0\include" /IC:\Users\cesar\stb /I"C:\Users\cesar\freetype-windows-binaries\include" /I"C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\src" /IC:\Users\cesar\Downloads\boost_1_66_0 /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Polyscript_Language.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt -Zm512  -D_SCL_SECURE_NO_WARNINGS PolyscriptParser.cpp
-         PolyscriptParser.cpp
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(47): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(67): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(104): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(118): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(145): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(159): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(173): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(187): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(212): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(300): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(314): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(337): warning C4129: '|' : unrecognized character escape sequence
-     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscriptparser.cpp(379): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\cesar\Downloads\glew-2.1.0\include" /IC:\Users\cesar\stb /I"C:\Users\cesar\freetype-windows-binaries\include" /I"C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\src" /IC:\Users\cesar\Downloads\boost_1_66_0 /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Polyscript_Language.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt -Zm512  -D_SCL_SECURE_NO_WARNINGS Polyscript_Language.cpp
+         Polyscript_Language.cpp
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(60): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(74): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(121): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(156): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(171): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(185): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(202): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(219): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(391): warning C4101: 'fwdmenu' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(489): warning C4244: 'argument' : conversion from 'int' to 'FLOAT', possible loss of data
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(537): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(544): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(578): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(589): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(421): warning C4101: 'text' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(412): warning C4101: 'wmId' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(412): warning C4101: 'wmEvent' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(416): warning C4101: 'isInside' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(415): warning C4101: 'isTrailing' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(419): warning C4101: 'textX' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(419): warning C4101: 'textY' : unreferenced local variable
+     1>c:\users\cesar\documents\visual studio 2012\projects\polyscript_language\polyscript_language\polyscript_language.cpp(407): warning C4715: 'CheckOrUncheckRenderingMode' : not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Debug\Polyscript_Language.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\cesar\Downloads\glew-2.1.0\lib\Release\Win32" /LIBPATH:"C:\Users\cesar\freetype-windows-binaries\release dll\win32" /LIBPATH:"C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\Build" /LIBPATH:C:\Users\cesar\Downloads\boost_1_66_0\stage\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Debug\Polyscript_Language.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cesar\Documents\Visual Studio 2012\Projects\Polyscript_Language\Debug\Polyscript_Language.lib" /MACHINE:X86 Debug\Polyscript_Language.res
          Debug\D2DHandle.obj
@@ -34,4 +45,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.34
+Time Elapsed 00:00:04.87

@@ -172,7 +172,7 @@ namespace OpenGLUI{
 		glfont=new FTGLPixmapFont("Fonts/courier.ttf");
 		if(glfont->Error()){
 			OutputDebugStringA(getErrorMessage(glfont->Error()));
-			OutputDebugString(L"\n");
+			wprintf(L"\n");
 		}
 		glfont->FaceSize((int)(textsize*(96.f/72.f)));
 		textlayout=new FTSimpleLayout();

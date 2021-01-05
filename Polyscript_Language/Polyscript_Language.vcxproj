@@ -41,6 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\Polyscript_Language\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -52,13 +54,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\cesar\Downloads\glew-2.1.0\include;C:\Users\cesar\stb;C:\Users\cesar\freetype-windows-binaries\include;C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\src;C:\Users\cesar\Downloads\boost_1_66_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\glew-2.1.0\include;..\stb;..\freetype-windows-binaries\include;..\ftgl-2.1.3~rc5\src;..\boost_1_66_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm512  -D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\cesar\Downloads\glew-2.1.0\lib\Release\Win32;C:\Users\cesar\freetype-windows-binaries\release dll\win32;C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\Build;C:\Users\cesar\Downloads\boost_1_66_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\glew-2.1.0\lib\Release\Win32;..\freetype-windows-binaries\release dll\win32;..\ftgl-2.1.3~rc5\msvc\Build;..\boost_1_66_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,7 +72,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\cesar\Downloads\glew-2.1.0\include;C:\Users\cesar\stb;C:\Users\cesar\freetype-windows-binaries\include;C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\src;C:\Users\cesar\Downloads\boost_1_66_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\glew-2.1.0\include;..\stb;..\freetype-windows-binaries\include;..\ftgl-2.1.3~rc5\src;..\boost_1_66_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zm512  _SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -78,7 +80,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\cesar\Downloads\glew-2.1.0\lib\Release\Win32;C:\Users\cesar\freetype-windows-binaries\release dll\win32;C:\Users\cesar\Downloads\ftgl-2.1.3~rc5\msvc\Build;C:\Users\cesar\Downloads\boost_1_66_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\glew-2.1.0\lib\Release\Win32;..\freetype-windows-binaries\release dll\win32;..\ftgl-2.1.3~rc5\msvc\Build;..\boost_1_66_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -108,6 +110,7 @@
     <ClCompile Include="freetype_renderer.cpp" />
     <ClCompile Include="GLHandle.cpp" />
     <ClCompile Include="OpenGLUI.cpp" />
+    <ClCompile Include="PolyscriptFigure.cpp" />
     <ClCompile Include="PolyscriptParser.cpp" />
     <ClCompile Include="PolyscriptVariable.cpp" />
     <ClCompile Include="Polyscript_Language.cpp" />

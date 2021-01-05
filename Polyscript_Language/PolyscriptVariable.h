@@ -1,12 +1,50 @@
 #ifndef POLYSCRIPTVARIABLE_INCLUDED
 #define POLYSCRIPTVARIABLE_INCLUDED
 #include "stdafx.h"
+enum PolyscriptFigureType{
+	POLYSCRIPT_FIGURE_TYPE_SQUARE,
+	POLYSCRIPT_FIGURE_TYPE_RECTANGLE,
+	POLYSCRIPT_FIGURE_TYPE_ROUNDEDRECTANGLE,
+	POLYSCRIPT_FIGURE_TYPE_TRIANGLE,
+	POLYSCRIPT_FIGURE_TYPE_ELLIPSE,
+	POLYSCRIPT_FIGURE_TYPE_LINE,
+	POLYSCRIPT_FIGURE_TYPE_POLYGON
+};
+static std::map<std::wstring,PolyscriptFigureType> figureAssocs=boost::assign::map_list_of
+	(L"Square",POLYSCRIPT_FIGURE_TYPE_SQUARE)
+	(L"Rectangle",POLYSCRIPT_FIGURE_TYPE_RECTANGLE)
+	(L"RoundedRectangle",POLYSCRIPT_FIGURE_TYPE_ROUNDEDRECTANGLE)
+	(L"Triangle",POLYSCRIPT_FIGURE_TYPE_TRIANGLE)
+	(L"Ellipse",POLYSCRIPT_FIGURE_TYPE_ELLIPSE)
+	(L"Line",POLYSCRIPT_FIGURE_TYPE_LINE)
+	(L"Polygon",POLYSCRIPT_FIGURE_TYPE_POLYGON);
+enum PolyscriptDrawMode{
+	POLYSCRIPT_DRAW_MODE_DRAW,
+	POLYSCRIPT_DRAW_MODE_FILL,
+	POLYSCRIPT_DRAW_MODE_BOTH_DRAW_TOP,
+	POLYSCRIPT_DRAW_MODE_BOTH_FILL_TOP
+};
+static std::map<std::wstring,PolyscriptDrawMode> drawModeAssocs=boost::assign::map_list_of
+	(L"Draw",POLYSCRIPT_DRAW_MODE_DRAW)
+	(L"Fill",POLYSCRIPT_DRAW_MODE_FILL)
+	(L"BothDrawTop",POLYSCRIPT_DRAW_MODE_BOTH_DRAW_TOP)
+	(L"BothFillTop",POLYSCRIPT_DRAW_MODE_BOTH_FILL_TOP);
+struct PolyscriptPoint{
+	float x;
+	float y;
+};
 struct PolyscriptGradientStop;
 class PolyscriptVariable;
 class PolyscriptColor;
 class PolyscriptBrush;
 class PolyscriptVariable{
 public:
+	bool operator== (PolyscriptVariable& other){
+		return this==&other;
+	}
+	bool operator!= (PolyscriptVariable& other){
+		return this!=&other;
+	}
 	PolyscriptVariable(){
 		this->name=L"PolyscriptVariable";
 	}

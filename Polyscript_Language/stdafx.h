@@ -68,6 +68,7 @@ using namespace D2D1;
 #pragma comment(lib,"freetype.lib")
 #include "FTGL/ftgl.h"
 #pragma comment(lib,"ftgl.lib")
+#include <boost/assign.hpp>
 #include <boost/regex.hpp>
 #include <boost/xpressive/xpressive.hpp>
 #include <boost/algorithm/algorithm.hpp>
@@ -95,6 +96,7 @@ using namespace D2DUI;
 #include "OpenGLUI.h"
 using namespace OpenGLUI;
 #include "PolyscriptVariable.h"
+#include "figure.h"
 #include "PolyscriptParser.h"
 #include "TextRendererDX.h"
 #include "TextRendererGL.h"

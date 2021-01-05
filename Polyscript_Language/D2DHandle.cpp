@@ -25,5 +25,6 @@ bool D2DHandle::InitializeD2D(HWND hwnd,GameSettings& settings){
 	}
 	CoCreateInstance(CLSID_WICImagingFactory,NULL,CLSCTX_INPROC_SERVER,IID_IWICImagingFactory,(LPVOID*)imgfactory.GetAddressOf());
 	dwritefactory->CreateTextFormat(L"Microsoft Sans Serif",NULL,DWRITE_FONT_WEIGHT_NORMAL,DWRITE_FONT_STYLE_NORMAL,DWRITE_FONT_STRETCH_NORMAL,12.0f,L"en-us",textformat.GetAddressOf());
+	d2dfactory->CreateDrawingStateBlock(targetstate.GetAddressOf());
 	return true;
 }

@@ -277,6 +277,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 		MessageBox(NULL,L"Debe inicializarse al menos un renderizador. Usted no pudo inicializar ninguno.",L"Error de inicialización",MB_OK);
 		return -1;
 	}
+	AllocConsole();
 	HDC hdc=GetWindowDC(hwnd);
 	d2d->target->CreateSolidColorBrush(ColorF(0x0000FF),reservedBrush.GetAddressOf());
 	d2d->target->CreateSolidColorBrush(ColorF(ColorF::Gray),paramBrush.GetAddressOf());
@@ -295,12 +296,35 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 			DispatchMessage(&msg);
 		}
 		else if(IsWindowEnabled(hwnd)){
+			if(rendererDirectX.textBox->getText().length()!=0){
+				std::wstring txt=rendererDirectX.textBox->getText();
+				for(int i=0;i<rendererDirectX.textBox->getText().length();i++){
+					if(rendererDirectX.textBox->getText().at(i)==L''){
+						txt.erase(i,1);
+					}
+				}
+				rendererDirectX.textBox->setText(txt);
+				rendererOpenGL.textBox->setText(txt);
+			}//Remover caracteres en blanco
 			if(rendererInitializedDX&&renderType==POLYSCRIPT_RENDER_DIRECT2D){
 				d2d->target->BeginDraw();
 				d2d->target->Clear(ColorF(ColorF::White));
 				if(needsRecreation){
 					rendererDirectX.recreateTextRendererDX(d2d,settings,parser);
+					if(parser.figureBank.size()!=0){
+						for(int i=0;i<parser.figureBank.size();i++){
+							parser.figureBank.at(i).recreateResources(d2d);
+						}
+					}
 					needsRecreation=false;
+				}
+				if(parser.figureBank.size()!=0){
+					d2d->target->SaveDrawingState(d2d->targetstate.Get());
+					d2d->target->SetTransform(Matrix3x2F::Translation((float)rendererDirectX.textBox->getBounds().right,0.f));
+					for(int i=0;i<parser.figureBank.size();i++){
+						parser.figureBank.at(i).draw(d2d);
+					}
+					d2d->target->RestoreDrawingState(d2d->targetstate.Get());
 				}
 				D2DUISystem::getInstance().draw(d2d);
 				d2d->target->EndDraw();
@@ -319,6 +343,19 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 				if(needsRecreation){
 					rendererOpenGL.recreateTextRendererGL(gl,settings,parser);
 					needsRecreation=false;
+					if(parser.figureBank.size()!=0){
+						for(int i=0;i<parser.figureBank.size();i++){
+							parser.figureBank.at(i).recreateResources(gl);
+						}
+					}
+				}
+				if(parser.figureBank.size()!=0){
+					glPushMatrix();
+					glTranslatef(1.f,0.f,0.f);
+					for(int i=0;i<parser.figureBank.size();i++){
+						parser.figureBank.at(i).draw(gl);
+					}
+					glPopMatrix();
 				}
 				OpenGLUISystem::getInstance().draw(gl);
 				glDisable(GL_BLEND);
@@ -329,6 +366,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 		}
 	}
 	textcolorthreadrunning=false;
+	FreeConsole();
 	return (int) msg.wParam;
 }
 
@@ -417,8 +455,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	HDC hdc;
 	int x,y;
 	float textX, textY;
+	std::wstringstream filestream;
+	std::wstring fileline;
 	wchar_t newcharacter;
-	wchar_t* text;
+	wchar_t* text=new wchar_t[1000];
 	switch (message)
 	{
 	case WM_COMMAND:
@@ -444,21 +484,69 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 				rendererDirectX.textBox->setText(L"");
 				rendererOpenGL.textBox->setText(L"");
 				parser.readFile(openPolyFile.lpstrFile);
-				SetWindowText(hWnd,std::wstring(std::wstring(szTitle)+std::wstring(L" - ")+std::wstring(openPolyFile.lpstrFile)).c_str());
+				currentFilename=std::wstring(openPolyFile.lpstrFile);
+				SetWindowText(hWnd,std::wstring(std::wstring(szTitle)+std::wstring(L" - ")+currentFilename).c_str());
 				needsRecreation=true;
 			}
 			SetCurrentDirectory(curDir);//Regresa al directorio original
 			break;
 		case IDM_SAVE:
+			if(currentFilename!=L""){
+				parser.fileLines.clear();
+				filestream=std::wstringstream();
+				filestream<<rendererDirectX.textBox->getText();
+				while(std::getline(filestream,fileline)){
+					parser.fileLines.push_back(fileline);
+				}
+				parser.saveFile(_wcsdup(currentFilename.c_str()));
+			}
+			else{
+				SendMessage(hWnd,WM_COMMAND,IDM_SAVEAS,0);
+			}
 			break;
 		case IDM_SAVEAS:
+			parser.fileLines.clear();
+			filestream=std::wstringstream();
+			filestream<<rendererDirectX.textBox->getText();
+			while(std::getline(filestream,fileline)){
+				parser.fileLines.push_back(fileline);
+			}
+			GetCurrentDirectory(MAX_PATH,curDir);//Respalda el directorio original
+			ZeroMemory(&openPolyFile,sizeof(OPENFILENAME));
+			openPolyFile.lStructSize=sizeof(OPENFILENAME);
+			openPolyFile.hwndOwner=hWnd;
+			openPolyFile.hInstance=hInst;
+			openPolyFile.lpstrFilter=L"Polyscript Files\0*.poly";
+			openPolyFile.lpstrCustomFilter=NULL;
+			openPolyFile.nFilterIndex=1;
+			openPolyFile.lpstrFile=fileName;
+			openPolyFile.lpstrFile[0]='\0';
+			openPolyFile.nMaxFile=sizeof(fileName);
+			openPolyFile.lpstrFileTitle=NULL;
+			openPolyFile.lpstrInitialDir=NULL;
+			openPolyFile.nMaxFileTitle=0;
+			openPolyFile.lpstrTitle=L"Guardar archivo de Polyscript";
+			openPolyFile.Flags=OFN_FILEMUSTEXIST|OFN_PATHMUSTEXIST|OFN_CREATEPROMPT|OFN_EXPLORER;
+			if(GetSaveFileName(&openPolyFile)==TRUE){
+				currentFilename=std::wstring(openPolyFile.lpstrFile);
+				SetWindowText(hWnd,std::wstring(std::wstring(szTitle)+std::wstring(L" - ")+currentFilename).c_str());
+				std::vector<std::wstring>fileparts;
+				boost::algorithm::split_regex(fileparts,currentFilename,boost::wregex(L"\\."));
+				if(fileparts.at(fileparts.size()-1)!=L"poly"){
+					currentFilename+=L".poly";
+				}
+				parser.saveFile(_wcsdup(currentFilename.c_str()));
+			}
+			SetCurrentDirectory(curDir);//Regresa al directorio original
 			break;
 		case IDM_CLOSE:
 			ShowWindow(leftPanel,SW_HIDE);
 			ShowWindow(rightPanel,SW_HIDE);
 			break;
 		case IDM_COMPILE:
+			SendMessage(hWnd,WM_COMMAND,IDM_SAVE,0);
 			parser.parseFile();
+			SendMessage(hWnd,WM_COMMAND,IDM_RECREATE,0);
 			break;
 		case IDM_RECREATE:
 			needsRecreation=true;
@@ -501,6 +589,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if(rendererOpenGL.textBox->isEditable()){
 				if((x>=rendererOpenGL.textBox->getBounds().left&&x<=rendererOpenGL.textBox->getBounds().right)&&(y>=rendererOpenGL.textBox->getBounds().top&&y<=rendererOpenGL.textBox->getBounds().bottom)){
 					rendererOpenGL.textBox->setFocus(true);
+					for(int i=0;i<rendererOpenGL.textBox->getText().length();i++){
+						FTBBox box=rendererOpenGL.textBox->textlayout->BBox(rendererOpenGL.textBox->getText().substr(0,i).c_str(),i,FTPoint(0,687-rendererOpenGL.textBox->getBounds().top,0));
+						float x1=box.Upper().Xf();
+						float y1=box.Upper().Yf();
+						float x2=box.Lower().Xf();
+						float y2=box.Lower().Yf();
+						wprintf(std::wstring(std::wstring(L"Upper: ")+std::to_wstring(x1)+std::wstring(L", ")+std::to_wstring(y1)+std::wstring(L".\n")).c_str());
+						wprintf(std::wstring(std::wstring(L"Lower: ")+std::to_wstring(x2)+std::wstring(L", ")+std::to_wstring(y2)+std::wstring(L".\n")).c_str());
+					}
 				}
 				else{
 					rendererOpenGL.textBox->setFocus(false);
@@ -550,10 +647,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case 0x53://S
 			if(GetKeyState(VK_CONTROL)&0x8000){
 				if(GetKeyState(VK_SHIFT)&0x8000){
-					MessageBox(hWnd,L"Save as",L"Save as",MB_OK);
+					SendMessage(hWnd,WM_COMMAND,IDM_SAVEAS,0);
 				}
 				else{
-					MessageBox(hWnd,L"Save",L"Save",MB_OK);
+					SendMessage(hWnd,WM_COMMAND,IDM_SAVE,0);
 				}
 			}
 			break;

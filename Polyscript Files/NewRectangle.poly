@@ -1,0 +1,15 @@
+﻿años_que_le_quedan_de_gobierno_a_amlo="4.3"
+ref_amlo&=*años_que_le_quedan_de_gobierno_a_amlo
+color_rgba="0.0,1.0,0.2,0.4"
+brush_color=brush("0.0,1.0,0.2,0.4")
+rgba=color_rgba
+bmp=bitmap("Images\Textures\obama_face.png")
+cool_gradient=gradient({"0.0,1.0,0.2,0.4";"0.0";"0.0"},{"0.5,1.0,0.7,1.0";"0.5";"0.5"})
+BeginFigure(type="RoundedRectangle",drawMode="Fill",radiusX="10.8",radiusY="5.3",color="0.0,1.0,1.0,1.0",left="10",top="10",right="160",bottom="160",opacity="1.0",brush=brush("0.0,1.0,1.0,1.0")):
+EndFigure
+BeginFigure(type="Ellipse",drawMode="Fill",radiusX="75",radiusY="75",color="0.0,0.0,1.0,1.0",x="10",y="170",opacity="1.0",brush=brush("0.0,1.0,1.0,1.0")):
+EndFigure
+BeginFigure(type="Square",drawMode="Fill",color="1.0,0.0,1.0,1.0",left="170",top="10",width="150",opacity="1.0",brush=brush("1.0,0.0,1.0,1.0")):
+EndFigure
+BeginFigure(type="Rectangle",drawMode="Fill",color="1.0,0.0,1.0,1.0",left="170",top="170",width="150",height="230",opacity="1.0",brush=brush("1.0,0.0,1.0,1.0")):
+EndFigure

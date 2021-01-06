@@ -14,7 +14,11 @@ bool D2DHandle::InitializeD2D(HWND hwnd,GameSettings& settings){
 	D2D1_RENDER_TARGET_PROPERTIES rtp;
 	rtp.dpiX=0.0f;
 	rtp.dpiY=0.0f;
-	rtp.minLevel=D2D1_FEATURE_LEVEL_10;
+	unsigned long long RAM;
+	GetPhysicallyInstalledSystemMemory(&RAM);
+	float GBRAM=(float)(RAM/1048576.f);
+	MessageBox(NULL,std::to_wstring(GBRAM).c_str(),L"RAM",MB_OK);
+	rtp.minLevel=(GBRAM>=4.f)?D2D1_FEATURE_LEVEL_10:D2D1_FEATURE_LEVEL_9;
 	rtp.pixelFormat=PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM,D2D1_ALPHA_MODE_PREMULTIPLIED);
 	rtp.type=D2D1_RENDER_TARGET_TYPE_HARDWARE;
 	rtp.usage=D2D1_RENDER_TARGET_USAGE_NONE;

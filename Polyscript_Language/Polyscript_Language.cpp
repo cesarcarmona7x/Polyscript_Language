@@ -278,6 +278,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 		return -1;
 	}
 	AllocConsole();
+	freopen("CONOUT$","w",stdout);
 	HDC hdc=GetWindowDC(hwnd);
 	d2d->target->CreateSolidColorBrush(ColorF(0x0000FF),reservedBrush.GetAddressOf());
 	d2d->target->CreateSolidColorBrush(ColorF(ColorF::Gray),paramBrush.GetAddressOf());

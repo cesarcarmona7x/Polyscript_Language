@@ -169,7 +169,7 @@ namespace OpenGLUI{
 		unsigned char* resizedDisabled=(unsigned char*)malloc(w*h*channels_bmp_disabled_data);
 		stbir_resize_uint8(bmp_disabled_data,width,height,0,resizedDisabled,getBounds().right-getBounds().left,getBounds().bottom-getBounds().top,0,channels_bmp_disabled_data);
 		bmp_disabled_data=resizedDisabled;
-		glfont=new FTGLPixmapFont("Fonts/courier.ttf");
+		glfont=new FTGLPixmapFont("Fonts\\courier.ttf");
 		if(glfont->Error()){
 			OutputDebugStringA(getErrorMessage(glfont->Error()));
 			wprintf(L"\n");

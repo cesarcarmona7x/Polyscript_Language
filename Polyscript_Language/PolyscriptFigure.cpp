@@ -36,6 +36,7 @@ void PolyscriptFigure::recreateResources(std::shared_ptr<D2DHandle>& d2d){
 			polygonsink->AddLine(Point2F(desc.points.at(i).x,desc.points.at(i).y));
 		}
 		polygonsink->EndFigure(D2D1_FIGURE_END_CLOSED);
+		polygonsink->Close();
 		break;
 	case POLYSCRIPT_FIGURE_TYPE_POLYGON:
 		d2d->d2dfactory->CreatePathGeometry(polygon.ReleaseAndGetAddressOf());
@@ -59,7 +60,27 @@ void PolyscriptFigure::recreateResources(std::shared_ptr<D2DHandle>& d2d){
 	}
 }
 void PolyscriptFigure::recreateResources(std::shared_ptr<GLHandle>& gl){
-	
+	Vertices.clear();
+	switch(desc.type){
+	case POLYSCRIPT_FIGURE_TYPE_LINE:
+		for(int i=0;i<2;i++){
+			Vertices.push_back(PixelToGLPoint2(desc.points.at(i).x,1280.f));
+			Vertices.push_back(PixelToGLPoint2(desc.points.at(i).y,720.f));
+		}
+		break;
+	case POLYSCRIPT_FIGURE_TYPE_TRIANGLE:
+		for(int i=0;i<3;i++){
+			Vertices.push_back(PixelToGLPoint2(desc.points.at(i).x,1280.f));
+			Vertices.push_back(PixelToGLPoint2(desc.points.at(i).y,720.f));
+		}
+		break;
+	case POLYSCRIPT_FIGURE_TYPE_POLYGON:
+		for(int i=0;i<desc.points.size();i++){
+			Vertices.push_back(PixelToGLPoint2(desc.points.at(i).x,1280.f));
+			Vertices.push_back(PixelToGLPoint2(desc.points.at(i).y,720.f));
+		}
+		break;
+	}
 }
 void PolyscriptFigure::draw(std::shared_ptr<D2DHandle>& d2d){
 	bool useBrush=solidbrush1!=nullptr;
@@ -352,49 +373,49 @@ void PolyscriptFigure::draw(std::shared_ptr<D2DHandle>& d2d){
 }
 void DrawEllipse(float cx, float cy, float rx, float ry, int num_segments) 
 { 
-    float theta = 2 * 3.1415926 / float(num_segments); 
-    float c = cosf(theta);//precalculate the sine and cosine
-    float s = sinf(theta);
-    float t;
+	float theta = 2 * 3.1415926 / float(num_segments); 
+	float c = cosf(theta);//precalculate the sine and cosine
+	float s = sinf(theta);
+	float t;
 
-    float x = 1;//we start at angle = 0 
-    float y = 0; 
+	float x = 1;//we start at angle = 0 
+	float y = 0; 
 
 	glBegin(GL_LINE_LOOP);
-    for(int ii = 0; ii < num_segments; ii++) 
-    { 
-        //apply radius and offset
-        glVertex2f(x * rx + cx, y * ry + cy);//output vertex 
+	for(int ii = 0; ii < num_segments; ii++) 
+	{ 
+		//apply radius and offset
+		glVertex2f(x * rx + cx, y * ry + cy);//output vertex 
 
-        //apply the rotation matrix
-        t = x;
-        x = c * x - s * y;
-        y = s * t + c * y;
-    } 
-    glEnd(); 
+		//apply the rotation matrix
+		t = x;
+		x = c * x - s * y;
+		y = s * t + c * y;
+	} 
+	glEnd(); 
 }
 void FillEllipse(float cx, float cy, float rx, float ry, int num_segments) 
 { 
-    float theta = 2 * 3.1415926 / float(num_segments); //360°
-    float c = cosf(theta);//precalculate the sine and cosine
-    float s = sinf(theta);
-    float t;
+	float theta = 2 * 3.1415926 / float(num_segments); //360°
+	float c = cosf(theta);//precalculate the sine and cosine
+	float s = sinf(theta);
+	float t;
 
-    float x = 1;//we start at angle = 0 
-    float y = 0; 
+	float x = 1;//we start at angle = 0 
+	float y = 0; 
 
 	glBegin(GL_TRIANGLE_FAN);
-    for(int ii = 0; ii < num_segments; ii++) 
-    { 
-        //apply radius and offset
-        glVertex2f(x * rx + cx, y * ry + cy);//output vertex 
+	for(int ii = 0; ii < num_segments; ii++) 
+	{ 
+		//apply radius and offset
+		glVertex2f(x * rx + cx, y * ry + cy);//output vertex 
 
-        //apply the rotation matrix
-        t = x;
-        x = c * x - s * y;
-        y = s * t + c * y;
-    } 
-    glEnd(); 
+		//apply the rotation matrix
+		t = x;
+		x = c * x - s * y;
+		y = s * t + c * y;
+	} 
+	glEnd(); 
 }
 void DrawRoundedRectangle(float x1,float y1,float x2,float y2,float rx,float ry,float num_segments){
 	float theta = 2 * 3.1415926 / float(num_segments); //360°
@@ -521,6 +542,41 @@ void PolyscriptFigure::draw(std::shared_ptr<GLHandle>& gl){
 			glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
 			glColor4f(desc.color.getDataColor()[0],desc.color.getDataColor()[1],desc.color.getDataColor()[2],desc.color.getDataColor()[3]);
 			FillEllipse(PixelToGLPoint2(desc.x+desc.radiusX,1280.f),PixelToGLPoint2(desc.y+desc.radiusY,720.f),(desc.radiusX/1280.f)*2,(desc.radiusY/720.f)*2,128);
+			break;
+		}
+		glPopMatrix();
+		break;
+	case POLYSCRIPT_FIGURE_TYPE_LINE:
+		glPushMatrix();
+		glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+		glColor4f(desc.color.getDataColor()[0],desc.color.getDataColor()[1],desc.color.getDataColor()[2],desc.color.getDataColor()[3]);
+		glBegin(GL_LINES);
+		glVertex2f(Vertices.at(0),Vertices.at(1));
+		glVertex2f(Vertices.at(2),Vertices.at(3));
+		glEnd();
+		glPopMatrix();
+		break;
+	case POLYSCRIPT_FIGURE_TYPE_TRIANGLE:
+	case POLYSCRIPT_FIGURE_TYPE_POLYGON:
+		glPushMatrix();
+		switch(desc.drawMode){
+		case POLYSCRIPT_DRAW_MODE_DRAW:
+			glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+			glColor4f(desc.color.getDataColor()[0],desc.color.getDataColor()[1],desc.color.getDataColor()[2],desc.color.getDataColor()[3]);
+			glBegin(GL_TRIANGLE_FAN);
+			for(int i=0;i<desc.points.size();i++){
+				glVertex2f(Vertices.at(i*2),Vertices.at((i*2)+1));
+			}
+			glEnd();
+			break;
+		case POLYSCRIPT_DRAW_MODE_FILL:
+			glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+			glColor4f(desc.color.getDataColor()[0],desc.color.getDataColor()[1],desc.color.getDataColor()[2],desc.color.getDataColor()[3]);
+			glBegin(GL_TRIANGLE_FAN);
+			for(int i=0;i<desc.points.size();i++){
+				glVertex2f(Vertices.at(i*2),Vertices.at((i*2)+1));
+			}
+			glEnd();
 			break;
 		}
 		glPopMatrix();

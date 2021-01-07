@@ -340,6 +340,12 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance,
 				glLoadIdentity();
 				glOrtho(-1,1,1,-1.0,0,1);
 				glMatrixMode(GL_MODELVIEW);
+				glEnable(GL_POLYGON_SMOOTH);
+				glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST);
+				glEnable(GL_LINE_SMOOTH);
+				glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+				glEnable(GL_POINT_SMOOTH);
+				glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
 				glLoadIdentity();
 				if(needsRecreation){
 					rendererOpenGL.recreateTextRendererGL(gl,settings,parser);
@@ -590,15 +596,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if(rendererOpenGL.textBox->isEditable()){
 				if((x>=rendererOpenGL.textBox->getBounds().left&&x<=rendererOpenGL.textBox->getBounds().right)&&(y>=rendererOpenGL.textBox->getBounds().top&&y<=rendererOpenGL.textBox->getBounds().bottom)){
 					rendererOpenGL.textBox->setFocus(true);
-					for(int i=0;i<rendererOpenGL.textBox->getText().length();i++){
-						FTBBox box=rendererOpenGL.textBox->textlayout->BBox(rendererOpenGL.textBox->getText().substr(0,i).c_str(),i,FTPoint(0,687-rendererOpenGL.textBox->getBounds().top,0));
-						float x1=box.Upper().Xf();
-						float y1=box.Upper().Yf();
-						float x2=box.Lower().Xf();
-						float y2=box.Lower().Yf();
-						wprintf(std::wstring(std::wstring(L"Upper: ")+std::to_wstring(x1)+std::wstring(L", ")+std::to_wstring(y1)+std::wstring(L".\n")).c_str());
-						wprintf(std::wstring(std::wstring(L"Lower: ")+std::to_wstring(x2)+std::wstring(L", ")+std::to_wstring(y2)+std::wstring(L".\n")).c_str());
-					}
+					/*for(int i=0;i<rendererOpenGL.textBox->getText().length();i++){
+					FTBBox box=rendererOpenGL.textBox->textlayout->BBox(rendererOpenGL.textBox->getText().substr(0,i).c_str(),i,FTPoint(0,687-rendererOpenGL.textBox->getBounds().top,0));
+					float x1=box.Upper().Xf();
+					float y1=box.Upper().Yf();
+					float x2=box.Lower().Xf();
+					float y2=box.Lower().Yf();
+					wprintf(std::wstring(std::wstring(L"Upper: ")+std::to_wstring(x1)+std::wstring(L", ")+std::to_wstring(y1)+std::wstring(L".\n")).c_str());
+					wprintf(std::wstring(std::wstring(L"Lower: ")+std::to_wstring(x2)+std::wstring(L", ")+std::to_wstring(y2)+std::wstring(L".\n")).c_str());
+					}*/
 				}
 				else{
 					rendererOpenGL.textBox->setFocus(false);

@@ -58,6 +58,6 @@ private:
 	ComPtr<ID2D1BitmapBrush> bmpbrush1,bmpbrush2;//En caso de BothDrawTop o BothFillTop, el primer valor se usará abajo y el segundo arriba
 	GLubyte* Indices;
 	GLfloat TexCoord[8];
-	GLfloat* Vertices;
+	std::vector<GLfloat>Vertices;
 };
 #endif

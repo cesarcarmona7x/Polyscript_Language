@@ -13,3 +13,14 @@ BeginFigure(type="Square",drawMode="Fill",color="1.0,0.0,1.0,1.0",left="170",top
 EndFigure
 BeginFigure(type="Rectangle",drawMode="Fill",color="1.0,0.0,1.0,1.0",left="170",top="170",width="150",height="230",opacity="1.0",brush=brush("1.0,0.0,1.0,1.0")):
 EndFigure
+BeginFigure(type="Polygon",drawMode="Draw",color="1.0,0.0,1.0,1.0",opacity="1.0",brush=brush("1.0,0.0,1.0,1.0")):
+BeginPoint:
+x="20", y="430"
+EndPoint
+BeginPoint:
+x="170", y="410"
+EndPoint
+BeginPoint:
+x="320", y="430"
+EndPoint
+EndFigure
